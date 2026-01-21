@@ -1,0 +1,175 @@
+/* --------------------
+   Reset / Base
+-------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.panel a {
+
+color:white;
+
+}
+
+body {
+  font-family: Georgia, serif;
+  background: #0b1b33;
+  color: #fff;!important
+}
+
+/* --------------------
+   Layout
+-------------------- */
+.explore {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.explore-track {
+  display: flex;
+  height: 100%;
+}
+
+
+a {
+color:white; }
+/* --------------------
+   Panel (ANCHOR)
+-------------------- */
+.panel {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 2.5rem;
+  overflow: hidden;
+
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.75)),
+    var(--bg);
+  background-size: cover;
+  background-position: center;
+
+  text-decoration: none;      /* kill underline */
+  color: #fff;                /* kill purple */
+  cursor: pointer;
+
+  transition: flex 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.75);
+}
+
+/* --------------------
+   Hover / Active expand
+-------------------- */
+.panel:hover,
+.panel.active {
+  flex: 1.6;
+  filter: brightness(1);
+}
+
+/* --------------------
+   Gradient overlay
+-------------------- */
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.9)
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --------------------
+   Content layering
+-------------------- */
+.panel > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* --------------------
+   Typography
+-------------------- */
+.panel .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+.panel h2 {
+  margin-top: 1rem;
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  line-height: 1.2;
+color:white;!important
+}
+
+/* --------------------
+   Background Video
+-------------------- */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Show video only on active */
+.panel.active .bg-video {
+  opacity: 1;
+}
+
+/* --------------------
+   Accessibility
+-------------------- */
+.panel:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+/* --------------------
+   Mobile
+-------------------- */
+@media (max-width: 900px) {
+  .explore {
+    height: auto;
+  }
+
+  .explore-track {
+    flex-direction: column;
+  }
+
+  .panel {
+    min-height: 240px;
+  }
+}
+
+
+/* --------------------------------
+   FORCE panel links to stay white
+---------------------------------- */
+.panel,
+.panel:link,
+.panel:visited,
+.panel:hover,
+.panel:active,
+.panel:focus h2{
+  color: #fff !important;
+  text-decoration: none !important;
+}
